@@ -3,7 +3,7 @@ package staff;
 public abstract class Employee {
     private String name;
     private String NIN;
-    private double salary;
+    protected double salary;
 
     public Employee(String name, String NIN, double salary) {
         this.name = name;
@@ -15,6 +15,12 @@ public abstract class Employee {
         return name;
     }
 
+    public void setName(String name) {
+        if (name != null) {
+            this.name = name;
+        }
+    }
+
     public String getNIN() {
         return NIN;
     }
@@ -23,9 +29,13 @@ public abstract class Employee {
         return salary;
     }
 
+
     public void raiseSalary(double raise) {
-        double helper = this.salary * raise;
-        this.salary += helper;
+        if (raise > 0) {
+            double helper = this.salary * raise;
+            this.salary += helper;
+        }
+
     }
 
     public double payBonus() {
